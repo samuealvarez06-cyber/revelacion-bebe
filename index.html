@@ -3,46 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Revelación</title>
+
+<title>Revelación de Género</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
-  font-family: Arial;
+  font-family:'Poppins', sans-serif;
+  background:#f3e5d3;
+  color:#6b4c3b;
   text-align:center;
-  background:#f5e6d3;
 }
 
-.seccion{ display:none; padding:20px; }
-.activa{ display:block; }
+/* SECCIONES */
+.seccion{
+  display:none;
+  padding:30px 20px;
+}
 
+.activa{
+  display:block;
+}
+
+/* TITULOS */
+h1{
+  font-family:'Playfair Display', serif;
+  font-size:2.5em;
+  margin-bottom:10px;
+}
+
+h2{
+  font-family:'Playfair Display', serif;
+}
+
+/* TARJETAS */
+.card{
+  background:white;
+  border-radius:20px;
+  padding:20px;
+  margin:15px auto;
+  max-width:350px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* BOTONES */
 button{
-  padding:12px;
-  margin:10px;
+  margin-top:20px;
+  padding:12px 20px;
   border:none;
-  border-radius:10px;
+  border-radius:25px;
   background:#8b5e3c;
   color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  background:#6b4c3b;
+}
+
+/* DETALLES */
+.fecha{
+  font-size:1.5em;
+  font-weight:bold;
+}
+
+.sub{
+  color:#8b6b52;
+}
+
+/* EMOJIS */
+.emoji{
+  font-size:1.2em;
 }
 </style>
+
 </head>
 
 <body>
 
+<!-- 🌟 PAGINA 1 -->
 <div id="p1" class="seccion activa">
-<h1>👶 Revelación de Género</h1>
-<p>Sábado 20 Junio - 3:00 PM</p>
-<p>San Nicolás Tolentino</p>
 
-<button onclick="mostrar('p2')">Ver Dress Code</button>
+<h2 class="sub">Acompáñanos a nuestra</h2>
+<h1>Revelación de Género</h1>
+
+<div class="card">
+<p class="fecha">Sábado 20</p>
+<p>Junio - 3:00 PM</p>
+
+<p>📍 San Nicolás Tolentino</p>
+<p>Calle El Potrerito</p>
+<p>📞 7227461882</p>
 </div>
 
-<div id="p2" class="seccion">
-<h1>👗 Dress Code</h1>
-<p>Hombre: camisa blanca, jeans</p>
-<p>Mujer: blanco elegante</p>
+<div class="card">
+<h3>Opciones de regalo</h3>
+<p>💙 Niño: Pañales</p>
+<p>💗 Niña: Toallitas</p>
+</div>
 
-<button onclick="mostrar('p1')">Regresar</button>
+<p><b>¡No faltes!</b></p>
+
+<button onclick="mostrar('p2')">
+Ver Dress Code 👗
+</button>
+
+</div>
+
+<!-- 👗 PAGINA 2 -->
+<div id="p2" class="seccion">
+
+<h1>Dress Code</h1>
+
+<div class="card">
+<h3>👨 Hombre</h3>
+<p>Camisa blanca</p>
+<p>Jeans oscuros</p>
+</div>
+
+<div class="card">
+<h3>👩 Mujer</h3>
+<p>Camisa blanca</p>
+<p>Jeans oscuros</p>
+<p>Vestido blanco</p>
+</div>
+
+<button onclick="mostrar('p1')">
+⬅️ Regresar
+</button>
+
 </div>
 
 <script>

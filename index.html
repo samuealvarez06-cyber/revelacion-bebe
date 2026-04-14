@@ -4,80 +4,57 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Revelación de Género</title>
+<title>Revelación</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
   font-family:'Poppins', sans-serif;
-  background:#f3e5d3;
-  color:#6b4c3b;
-  text-align:center;
+  overflow-x:hidden;
 }
 
 /* SECCIONES */
 .seccion{
   display:none;
-  padding:30px 20px;
+  width:100%;
+  height:100vh;
 }
 
 .activa{
   display:block;
 }
 
-/* TITULOS */
-h1{
-  font-family:'Playfair Display', serif;
-  font-size:2.5em;
-  margin-bottom:10px;
+/* FONDOS */
+#p1{
+  background: url('fondo1.jpg') no-repeat center/cover;
 }
 
-h2{
-  font-family:'Playfair Display', serif;
-}
-
-/* TARJETAS */
-.card{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  margin:15px auto;
-  max-width:350px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.1);
+#p2{
+  background: url('fondo2.jpg') no-repeat center/cover;
 }
 
 /* BOTONES */
-button{
-  margin-top:20px;
-  padding:12px 20px;
+.btn{
+  position:absolute;
+  bottom:40px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:12px 25px;
   border:none;
   border-radius:25px;
   background:#8b5e3c;
   color:white;
   font-size:16px;
   cursor:pointer;
-  transition:0.3s;
 }
 
-button:hover{
-  background:#6b4c3b;
-}
-
-/* DETALLES */
-.fecha{
-  font-size:1.5em;
-  font-weight:bold;
-}
-
-.sub{
-  color:#8b6b52;
-}
-
-/* EMOJIS */
-.emoji{
-  font-size:1.2em;
+/* BOTON REGRESO */
+.back{
+  position:absolute;
+  top:20px;
+  left:20px;
 }
 </style>
 
@@ -85,31 +62,11 @@ button:hover{
 
 <body>
 
-<!-- 🌟 PAGINA 1 -->
+<!-- 🧸 PAGINA 1 -->
 <div id="p1" class="seccion activa">
 
-<h2 class="sub">Acompáñanos a nuestra</h2>
-<h1>Revelación de Género</h1>
-
-<div class="card">
-<p class="fecha">Sábado 20</p>
-<p>Junio - 3:00 PM</p>
-
-<p>📍 San Nicolás Tolentino</p>
-<p>Calle El Potrerito</p>
-<p>📞 7227461882</p>
-</div>
-
-<div class="card">
-<h3>Opciones de regalo</h3>
-<p>💙 Niño: Pañales</p>
-<p>💗 Niña: Toallitas</p>
-</div>
-
-<p><b>¡No faltes!</b></p>
-
-<button onclick="mostrar('p2')">
-Ver Dress Code 👗
+<button class="btn" onclick="mostrar('p2')">
+Ver Dress Code
 </button>
 
 </div>
@@ -117,22 +74,7 @@ Ver Dress Code 👗
 <!-- 👗 PAGINA 2 -->
 <div id="p2" class="seccion">
 
-<h1>Dress Code</h1>
-
-<div class="card">
-<h3>👨 Hombre</h3>
-<p>Camisa blanca</p>
-<p>Jeans oscuros</p>
-</div>
-
-<div class="card">
-<h3>👩 Mujer</h3>
-<p>Camisa blanca</p>
-<p>Jeans oscuros</p>
-<p>Vestido blanco</p>
-</div>
-
-<button onclick="mostrar('p1')">
+<button class="btn back" onclick="mostrar('p1')">
 ⬅️ Regresar
 </button>
 

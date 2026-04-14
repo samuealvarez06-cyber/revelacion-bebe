@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Revelación de Género</title>
+<title>Revelación Género</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
@@ -12,55 +12,60 @@
 body{
   margin:0;
   font-family:'Poppins', sans-serif;
+  overflow:hidden;
 }
 
 /* SECCIONES */
 .seccion{
-  display:none;
+  position:absolute;
   width:100%;
-  min-height:100vh;
+  height:100vh;
+  top:0;
+  left:0;
+  opacity:0;
+  transition:1s;
 }
 
 .activa{
-  display:block;
+  opacity:1;
+  z-index:1;
 }
 
-/* FONDO OSITOS */
+/* FONDOS */
 #p1{
-  background: url('./fondo1.jpg') no-repeat center/cover;
+  background:url('./fondo1.jpg') center/cover no-repeat;
 }
 
-/* FONDO DRESS CODE */
 #p2{
-  background: url('./fondo2.jpg') no-repeat center/cover;
+  background:url('./fondo2.jpg') center/cover no-repeat;
 }
 
-/* CONTENIDO CENTRAL */
+/* TARJETA */
 .contenido{
-  background: rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.9);
   padding:25px;
   border-radius:20px;
   width:90%;
   max-width:400px;
-  margin:50px auto;
+  margin:60px auto;
   text-align:center;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  animation:fadeUp 1s;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 /* TITULOS */
 h1{
-  font-family:'Playfair Display', serif;
-  font-size:2.3em;
+  font-family:'Playfair Display';
   color:#6b4c3b;
 }
 
-h2{
-  color:#8b6b52;
-}
-
 .fecha{
-  font-size:1.4em;
   font-weight:bold;
+  font-size:1.4em;
 }
 
 /* BOTONES */
@@ -71,7 +76,6 @@ button{
   border-radius:25px;
   background:#8b5e3c;
   color:white;
-  font-size:15px;
   cursor:pointer;
   transition:0.3s;
 }
@@ -80,11 +84,31 @@ button:hover{
   background:#6b4c3b;
 }
 
-/* BOTON REGRESO */
-.back{
-  position:absolute;
-  top:20px;
-  left:20px;
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:20px;
+  text-decoration:none;
+}
+
+/* CONFETI */
+.confeti{
+  position:fixed;
+  width:10px;
+  height:10px;
+  background:red;
+  top:-10px;
+  animation:fall 3s linear infinite;
+}
+
+@keyframes fall{
+  to{ transform:translateY(100vh) rotate(360deg);}
 }
 </style>
 
@@ -92,11 +116,15 @@ button:hover{
 
 <body>
 
+<!-- 🎵 MUSICA -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
+</audio>
+
 <!-- 🧸 PAGINA 1 -->
 <div id="p1" class="seccion activa">
 
 <div class="contenido">
-
 <h2>Acompáñanos a nuestra</h2>
 <h1>Revelación de Género</h1>
 
@@ -107,18 +135,12 @@ button:hover{
 <p>Calle El Potrerito</p>
 <p>📞 7227461882</p>
 
-<br>
-
 <h3>Opciones de regalo</h3>
 <p>💙 Niño: Pañales</p>
 <p>💗 Niña: Toallitas</p>
 
-<h2>¡No faltes!</h2>
-
-<button onclick="mostrar('p2')">
-Ver Dress Code 👗
-</button>
-
+<button onclick="cambiar('p2')">Ver Dress Code 👗</button>
+<button onclick="confeti()">🎉 Celebrar</button>
 </div>
 
 </div>
@@ -126,32 +148,43 @@ Ver Dress Code 👗
 <!-- 👗 PAGINA 2 -->
 <div id="p2" class="seccion">
 
-<button class="back" onclick="mostrar('p1')">⬅️</button>
-
 <div class="contenido">
-
 <h1>Dress Code</h1>
 
 <h3>👨 Hombre</h3>
 <p>Camisa blanca</p>
 <p>Jeans oscuros</p>
 
-<br>
-
 <h3>👩 Mujer</h3>
 <p>Camisa blanca</p>
 <p>Jeans oscuros</p>
 <p>Vestido blanco</p>
 
+<button onclick="cambiar('p1')">⬅️ Regresar</button>
 </div>
 
 </div>
+
+<!-- 📲 WHATSAPP -->
+<a class="whatsapp" href="https://wa.me/527227461882" target="_blank">💬</a>
 
 <script>
-function mostrar(id){
+function cambiar(id){
   document.getElementById("p1").classList.remove("activa");
   document.getElementById("p2").classList.remove("activa");
   document.getElementById(id).classList.add("activa");
+}
+
+function confeti(){
+  for(let i=0;i<50;i++){
+    let c=document.createElement("div");
+    c.className="confeti";
+    c.style.left=Math.random()*100+"%";
+    c.style.backgroundColor=["#ff66b2","#4da6ff","#ffd700"][Math.floor(Math.random()*3)];
+    document.body.appendChild(c);
+
+    setTimeout(()=>c.remove(),3000);
+  }
 }
 </script>
 

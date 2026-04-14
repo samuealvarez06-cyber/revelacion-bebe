@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Revelación Género</title>
+<title>Revelación de Género</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
@@ -12,7 +12,6 @@
 body{
   margin:0;
   font-family:'Poppins', sans-serif;
-  overflow:hidden;
 }
 
 /* SECCIONES */
@@ -23,7 +22,7 @@ body{
   top:0;
   left:0;
   opacity:0;
-  transition:1s;
+  transition:0.8s;
 }
 
 .activa{
@@ -40,7 +39,7 @@ body{
   background:url('./fondo2.jpg') center/cover no-repeat;
 }
 
-/* TARJETA */
+/* CONTENIDO */
 .contenido{
   background:rgba(255,255,255,0.9);
   padding:25px;
@@ -49,11 +48,12 @@ body{
   max-width:400px;
   margin:60px auto;
   text-align:center;
-  animation:fadeUp 1s;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  animation:fadeUp 0.8s;
 }
 
 @keyframes fadeUp{
-  from{opacity:0; transform:translateY(40px);}
+  from{opacity:0; transform:translateY(30px);}
   to{opacity:1; transform:translateY(0);}
 }
 
@@ -65,7 +65,7 @@ h1{
 
 .fecha{
   font-weight:bold;
-  font-size:1.4em;
+  font-size:1.3em;
 }
 
 /* BOTONES */
@@ -96,20 +96,6 @@ button:hover{
   font-size:20px;
   text-decoration:none;
 }
-
-/* CONFETI */
-.confeti{
-  position:fixed;
-  width:10px;
-  height:10px;
-  background:red;
-  top:-10px;
-  animation:fall 3s linear infinite;
-}
-
-@keyframes fall{
-  to{ transform:translateY(100vh) rotate(360deg);}
-}
 </style>
 
 </head>
@@ -139,8 +125,9 @@ button:hover{
 <p>💙 Niño: Pañales</p>
 <p>💗 Niña: Toallitas</p>
 
-<button onclick="cambiar('p2')">Ver Dress Code 👗</button>
-<button onclick="confeti()">🎉 Celebrar</button>
+<button onclick="cambiar('p2')">
+Ver Dress Code 👗
+</button>
 </div>
 
 </div>
@@ -160,7 +147,9 @@ button:hover{
 <p>Jeans oscuros</p>
 <p>Vestido blanco</p>
 
-<button onclick="cambiar('p1')">⬅️ Regresar</button>
+<button onclick="cambiar('p1')">
+⬅️ Regresar
+</button>
 </div>
 
 </div>
@@ -173,18 +162,6 @@ function cambiar(id){
   document.getElementById("p1").classList.remove("activa");
   document.getElementById("p2").classList.remove("activa");
   document.getElementById(id).classList.add("activa");
-}
-
-function confeti(){
-  for(let i=0;i<50;i++){
-    let c=document.createElement("div");
-    c.className="confeti";
-    c.style.left=Math.random()*100+"%";
-    c.style.backgroundColor=["#ff66b2","#4da6ff","#ffd700"][Math.floor(Math.random()*3)];
-    document.body.appendChild(c);
-
-    setTimeout(()=>c.remove(),3000);
-  }
 }
 </script>
 

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revelación de Género</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  background: linear-gradient(to right, #89CFF0, #FFB6C1);
+  color: white;
+}
+
+.container {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+button {
+  padding: 15px 25px;
+  font-size: 18px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.nino { background-color: #4da6ff; }
+.nina { background-color: #ff66b2; }
+
+#resultado {
+  font-size: 2em;
+  margin-top: 20px;
+}
+
+#countdown {
+  font-size: 1.5em;
+  margin: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>¿Niño o Niña? 👶</h1>
+
+<p>Sábado 20 de abril - 5:00 PM</p>
+<p>¡Acompáñanos a descubrirlo!</p>
+
+<div id="countdown"></div>
+
+<button class="nino" onclick="votar('💙 Team Niño')">💙 Niño</button>
+<button class="nina" onclick="votar('💗 Team Niña')">💗 Niña</button>
+
+<div id="resultado"></div>
+
+<button onclick="revelar()">🎉 Revelar 🎉</button>
+
+</div>
+
+<script>
+// contador
+const evento = new Date("Apr 20, 2026 17:00:00").getTime();
+
+setInterval(() => {
+  const ahora = new Date().getTime();
+  const diferencia = evento - ahora;
+
+  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+
+  document.getElementById("countdown").innerHTML =
+    `⏳ ${dias}d ${horas}h ${minutos}m`;
+}, 1000);
+
+// voto
+function votar(opcion){
+  document.getElementById("resultado").innerHTML =
+    "Elegiste: " + opcion;
+}
+
+// revelación
+function revelar(){
+  let genero = Math.random() > 0.5 ? "💙 ES NIÑO" : "💗 ES NIÑA";
+  document.body.style.background = genero.includes("NIÑO") ? "#4da6ff" : "#ff66b2";
+  document.getElementById("resultado").innerHTML = genero;
+}
+</script>
+
+</body>
+</html>|
